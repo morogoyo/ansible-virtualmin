@@ -1,0 +1,41 @@
+---
+- hosts: morogoyo_group
+  tasks:
+    # - name: Update System
+    #   yum:
+    #     name: "*"
+    #     state: "latest"
+  
+    # - name: Install Dependencies
+    #   yum:
+    #     name: 
+    #       - perl
+    #       - wget
+    #       - curl
+    #       - net-tools
+    #     state: present
+
+    # - name: Change hostname
+    #   become: yes
+    #   command: sudo hostnamectl set-hostname "node1.jmmdistributor.com"
+
+    # - name: what is the hostname
+    #   become: yes
+    #   command: sudo hostnamectl set-hostname "{{hostname}}"
+
+
+    - name: wget Virtualmin install.sh
+      get_url:
+        url: "http://software.virtualmin.com/gpl/scripts/install.sh"
+        dest: "/home/morogoyo/"
+
+    - name: Change install.sh permissions to execute
+      become: yes
+      file:
+        path: /home/morogoyo/install.sh
+        mode: +x
+
+    - name: Install Virtualmin on host
+      become: yes
+      shell: |
+        /home/morogoyo/install.sh
