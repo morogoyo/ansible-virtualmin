@@ -5,12 +5,12 @@ all:
     morogoyo_group:
       hosts:    
         morogoyo2c.mylabserver.com:       
-        # morogoyo3c.mylabserver.com:
+        morogoyo3c.mylabserver.com:
         
 
       vars:
         hostname_node_1: "node1.jmmdistributor.com"
-        # hostname_node_2: "node2.jmmdistributor.com"
+        hostname_node_2: "node2.jmmdistributor.com"
         
         
     
